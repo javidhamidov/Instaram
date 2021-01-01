@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block content %}
+<center><h1>{{ username }}</h1></center>
+<center><h2>ALL POSTS</h2></center>
+<div class='row'>
+    {% for post in data: %}
+      <div class="col-md-auto">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ post['filename'] }}" class="card-img-top" alt="{{ post['title'] }}" height="300">
+        <div class="card-body">
+          <h5 class="card-title"><a href='{{ url_for("profile", username=post["username"]) }}'>{{ post['username'] }}</a></h5>
+          <p class="card-text">{{ post['title'] }}</p>
+          <p class="card-text"><a href="{{ post['filename'] }}">Link for the image</a></p>
+          <p class="card-text">{{ post['date'] }}</p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock %}
